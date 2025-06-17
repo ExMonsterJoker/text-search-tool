@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Text Search Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fullscreen Toggle Button -->
+    <button class="fullscreen-toggle" id="fullscreenToggle">🖥️ Fullscreen</button>
+
+    <!-- Regular Mode Container -->
+    <div class="container" id="regularMode">
+        <header>
+            <h1>🔍 Image Text Search Tool</h1>
+            <div class="controls">
+                <input type="file" id="imageInput" accept="image/*" multiple>
+                <input type="file" id="jsonInput" accept=".json" multiple>
+                <button id="loadFiles">Load Files</button>
+            </div>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search text in images...">
+                <button id="searchBtn">Search</button>
+                <button id="clearBtn">Clear</button>
+            </div>
+            <div class="search-info">
+                <span id="searchResults">Ready to search</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>Search Results</h3>
+                <div id="resultsList"></div>
+            </div>
+
+            <div class="image-viewer">
+                <div class="zoom-controls">
+                    <button id="zoomOutBtn">🔍−</button>
+                    <button id="zoomInBtn">🔍+</button>
+                    <button id="zoomResetBtn">↻ Reset</button>
+                    <span id="zoomLevel">100%</span>
+                    <span class="zoom-hint">💡 Ctrl+Scroll to zoom</span>
+                </div>
+                
+                <div class="image-container" id="imageContainer">
+                    <canvas id="imageCanvas"></canvas>
+                    <div id="imageInfo"></div>
+                </div>
+                
+                <div class="navigation">
+                    <button id="prevBtn">← Previous</button>
+                    <span id="imageCounter">No images loaded</span>
+                    <button id="nextBtn">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-panel">
+            <h3>Text Details</h3>
+            <div id="textDetails">Select a text region to see details</div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Mode -->
+    <div class="fullscreen-mode" id="fullscreenMode">
+        <div class="fullscreen-sidebar">
+            <!-- Search Section -->
+            <div class="sidebar-section">
+                <h3>🔍 Search</h3>
+                <div class="fullscreen-search-box">
+                    <input type="text" id="fullscreenSearchInput" class="fullscreen-search-input" placeholder="Search text in images...">
+                    <div class="fullscreen-search-buttons">
+                        <button id="fullscreenSearchBtn" class="search-btn-primary">Search</button>
+                        <button id="fullscreenClearBtn" class="search-btn-secondary">Clear</button>
+                    </div>
+                    <div class="fullscreen-search-info" id="fullscreenSearchInfo">Ready to search</div>
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div class="sidebar-section">
+                <h3>📋 Results</h3>
+                <div class="fullscreen-results" id="fullscreenResultsList">
+                    No search results
+                </div>
+            </div>
+
+            <!-- Zoom Controls -->
+            <div class="sidebar-section">
+                <h3>🔍 Zoom</h3>
+                <div class="fullscreen-zoom-controls">
+                    <button id="fullscreenZoomOutBtn">−</button>
+                    <button id="fullscreenZoomInBtn">+</button>
+                    <button id="fullscreenZoomResetBtn">Reset</button>
+                    <span id="fullscreenZoomLevel" class="fullscreen-zoom-level">100%</span>
+                </div>
+                <div style="font-size: 11px; color: #95a5a6; margin-top: 8px;">
+                    💡 Ctrl+Scroll to zoom<br>
+                    🖱️ Click+Drag to pan
+                </div>
+            </div>
+
+            <!-- Text Details -->
+            <div class="sidebar-section">
+                <h3>📝 Details</h3>
+                <div class="fullscreen-details" id="fullscreenTextDetails">
+                    Select a text region to see details
+                </div>
+            </div>
+
+            <!-- Save Change -->
+            <div class="sidebar-section">
+                <h3>💾 Save Changes</h3>
+                <button id="saveChangesBtn" class="search-btn-primary">Save Annotations</button>
+            </div>
+        </div>
+
+        <div class="fullscreen-main">
+            <div class="fullscreen-header">
+                <h2 id="fullscreenImageTitle">Image Text Search Tool</h2>
+                <div class="fullscreen-controls">
+                    <button id="fullscreenPrevBtn">← Prev</button>
+                    <span id="fullscreenImageCounter">No images</span>
+                    <button id="fullscreenNextBtn">Next →</button>
+                    <button class="close-fullscreen" id="closeFullscreen">✕ Exit</button>
+                </div>
+            </div>
+
+            <div class="fullscreen-viewer">
+                <div class="fullscreen-image-container" id="fullscreenImageContainer">
+                    <canvas id="fullscreenCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
